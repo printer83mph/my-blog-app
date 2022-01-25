@@ -66,7 +66,7 @@ const Posts = () => {
           onSubmit={(data) => addPostCallback(data)}
         />
       </div>
-      <ul className="flex gap-4 flex-wrap overflow-x-scroll justify-center md:justify-start">
+      <ul className="flex gap-4 flex-wrap justify-start">
         {posts.map((data) => (<Post {...data} key={data.id} />)) }
       </ul>
     </div>
