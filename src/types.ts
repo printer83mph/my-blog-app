@@ -7,3 +7,8 @@ export interface PostData {
 export interface IdentifiedPostData extends PostData {
   id: string
 }
+
+export interface IntroData {
+  image: string,
+  description: string
+}

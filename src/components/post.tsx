@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addPost, removePost, updatePost } from '../actions/posts-actions'
-import { RootState } from '../reducers'
+import { useDispatch } from 'react-redux'
+
+import { updatePost, removePost } from '../actions/posts-actions'
 import { IdentifiedPostData, PostData } from '../types'
 import PostEdit from './post-edit'
 
@@ -29,7 +29,6 @@ const Post = (props: IdentifiedPostData) => {
       />
       <h4 className="font-black text-2xl mb-1">{title}</h4>
       <p className="text-gray-800 mb-2">{body}</p>
-      {/* TODO: image */}
       <div className="flex items-center justify-between">
         <div className="text-[10px] text-gray-400 mr-3">
           id:
@@ -47,30 +46,4 @@ const Post = (props: IdentifiedPostData) => {
   )
 }
 
-const Posts = () => {
-  const dispatch = useDispatch()
-  const posts = useSelector((state: RootState) => state.posts)
-
-  const addPostCallback = useCallback(
-    (data: PostData) => dispatch(addPost(data)),
-    [dispatch],
-  )
-
-  return (
-    <div>
-      <div className="flex items-center gap-6 mb-4">
-        <h2 className="text-4xl font-black">Posts</h2>
-        <PostEdit
-          buttonText="New Post"
-          title="New Post"
-          onSubmit={(data) => addPostCallback(data)}
-        />
-      </div>
-      <ul className="flex gap-4 flex-wrap justify-start">
-        {posts.map((data) => (<Post {...data} key={data.id} />)) }
-      </ul>
-    </div>
-  )
-}
-
-export default Posts
+export default Post
