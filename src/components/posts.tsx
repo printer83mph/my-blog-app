@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPost, updatePost } from '../actions/posts-actions'
+import { addPost, removePost, updatePost } from '../actions/posts-actions'
 import { RootState } from '../reducers'
 import { IdentifiedPostData, PostData } from '../types'
 import PostEdit from './post-edit'
@@ -16,8 +16,13 @@ const Post = (props: IdentifiedPostData) => {
     [dispatch, id],
   )
 
+  const removePostCallback = useCallback(
+    () => dispatch(removePost(id)),
+    [dispatch, id],
+  )
+
   return (
-    <li className="rounded-xl border-[1px] border-gray-300 p-4 w-[350px]">
+    <li className="rounded-xl border-[1px] border-gray-300 p-4 w-[350px] min-w-[350px] self-start">
       <div
         className="aspect-square rounded bg-center bg-cover mb-3 mx-auto"
         style={{ backgroundImage: `url(${image})` }}
@@ -34,6 +39,7 @@ const Post = (props: IdentifiedPostData) => {
         <PostEdit
           buttonText="Edit"
           onSubmit={modifyPostCallback}
+          onRemove={removePostCallback}
           defaultValues={props}
         />
       </div>
@@ -52,11 +58,15 @@ const Posts = () => {
 
   return (
     <div>
-      <div>
-        <h2>Posts</h2>
-        <PostEdit buttonText="New Post" onSubmit={(data) => addPostCallback(data)} />
+      <div className="flex items-center gap-6 mb-4">
+        <h2 className="text-4xl font-black">Posts</h2>
+        <PostEdit
+          buttonText="New Post"
+          title="New Post"
+          onSubmit={(data) => addPostCallback(data)}
+        />
       </div>
-      <ul className="flex gap-4">
+      <ul className="flex gap-4 flex-wrap overflow-x-scroll justify-center md:justify-start">
         {posts.map((data) => (<Post {...data} key={data.id} />)) }
       </ul>
     </div>
