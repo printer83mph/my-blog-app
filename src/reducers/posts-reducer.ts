@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from 'uuid'
+import { IdentifiedPostData } from '../types'
 
-const initialState = []
+const initialState: IdentifiedPostData[] = []
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'posts/postAdded':
+    case 'posts/added':
       return [
         ...state,
         {
@@ -12,15 +13,15 @@ const postsReducer = (state = initialState, action) => {
           id: uuidv4(),
         },
       ]
-    case 'posts/postRemoved': {
-      const postIndex = state.find(({ id }) => id === action.payload.id)
+    case 'posts/removed': {
+      const postIndex = state.findIndex(({ id }) => id === action.payload.id)
       return [
         ...state.slice(0, postIndex),
         ...state.slice(postIndex),
       ]
     }
-    case 'posts/postModified': {
-      const postIndex = state.find(({ id }) => id === action.payload.id)
+    case 'posts/updated': {
+      const postIndex = state.findIndex(({ id }) => id === action.payload.id)
       return [
         ...state.slice(0, postIndex),
         {

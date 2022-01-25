@@ -7,6 +7,8 @@ const Introduction = () => {
   const dispatch = useDispatch()
   const intro = useSelector((state: RootState) => state.intro)
 
+  // TODO: edit form
+
   return (
     <div>
       <div>
