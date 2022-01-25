@@ -40,6 +40,7 @@ module.exports = {
           }
       ],
       "react/jsx-props-no-spreading": 0,
+      "react/require-default-props": "off",
 
       // redux shenanigans
       "@typescript-eslint/default-param-last": "off"
