@@ -16,7 +16,10 @@ const IntroEdit = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { register, handleSubmit, reset } = useForm({ defaultValues: intro })
 
-  const updateCallback = useCallback((data) => dispatch(updateIntro(data)), [dispatch])
+  const updateCallback = useCallback(
+    (data) => dispatch(updateIntro(data)),
+    [dispatch]
+  )
 
   const openDialog = () => {
     reset(intro)
@@ -36,15 +39,34 @@ const IntroEdit = () => {
   return (
     <>
       <FloatingDialog isOpen={isOpen} onClose={closeDialog}>
-        <Dialog.Title className="text-2xl font-bold mb-4">Edit Introduction</Dialog.Title>
+        <Dialog.Title className="text-2xl font-bold mb-4">
+          Edit Introduction
+        </Dialog.Title>
         <form onSubmit={handleSubmit(onFormSubmit)}>
-          <input type="url" {...register('image', { required: true })} placeholder="Splash image URL here" className={`${inputClassName} mb-2`} />
-          <input type="text" {...register('description', { required: true })} placeholder="Blog description..." className={`${inputClassName} mb-4`} />
+          <input
+            type="url"
+            {...register('image', { required: true })}
+            placeholder="Splash image URL here"
+            className={`${inputClassName} mb-2`}
+          />
+          <input
+            type="text"
+            {...register('description', { required: true })}
+            placeholder="Blog description..."
+            className={`${inputClassName} mb-4`}
+          />
           <div className="flex items-center justify-end">
-            <button type="submit" className="block mr-2 rounded bg-blue-600 text-white px-4 py-1">
+            <button
+              type="submit"
+              className="block mr-2 rounded bg-blue-600 text-white px-4 py-1"
+            >
               Submit
             </button>
-            <button type="button" className="block text-gray-500" onClick={closeDialog}>
+            <button
+              type="button"
+              className="block text-gray-500"
+              onClick={closeDialog}
+            >
               <HiX />
             </button>
           </div>

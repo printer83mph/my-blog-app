@@ -15,10 +15,7 @@ const postsReducer = (state = initialState, action) => {
       ]
     case 'posts/removed': {
       const postIndex = state.findIndex(({ id }) => id === action.payload.id)
-      return [
-        ...state.slice(0, postIndex),
-        ...state.slice(postIndex + 1),
-      ]
+      return [...state.slice(0, postIndex), ...state.slice(postIndex + 1)]
     }
     case 'posts/updated': {
       const postIndex = state.findIndex(({ id }) => id === action.payload.id)

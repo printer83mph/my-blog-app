@@ -7,20 +7,26 @@ import { PostData } from '../types'
 import FloatingDialog from './floating-dialog'
 
 interface PostEditProps {
-  buttonText: string,
-  submitButtonText?: string,
-  title?: string,
-  onSubmit: (data: PostData) => void,
-  onRemove?: () => void,
-  defaultValues?: PostData,
-  resetValues?: boolean,
+  buttonText: string
+  submitButtonText?: string
+  title?: string
+  onSubmit: (data: PostData) => void
+  onRemove?: () => void
+  defaultValues?: PostData
+  resetValues?: boolean
   className?: string
 }
 
 const inputClassName = 'w-full p-2 rounded border-[1px] border-gray-300'
 
 const PostEdit = ({
-  buttonText, submitButtonText, title, onSubmit, onRemove, className, defaultValues,
+  buttonText,
+  submitButtonText,
+  title,
+  onSubmit,
+  onRemove,
+  className,
+  defaultValues,
   resetValues = true,
 }: PostEditProps) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,11 +46,10 @@ const PostEdit = ({
 
   return (
     <>
-      <FloatingDialog
-        isOpen={isOpen}
-        onClose={closeDialog}
-      >
-        <Dialog.Title className="text-2xl font-bold mb-4">{title || 'Edit Post'}</Dialog.Title>
+      <FloatingDialog isOpen={isOpen} onClose={closeDialog}>
+        <Dialog.Title className="text-2xl font-bold mb-4">
+          {title || 'Edit Post'}
+        </Dialog.Title>
         <form onSubmit={handleSubmit(onFormSubmit)}>
           <input
             type="text"
@@ -74,12 +79,21 @@ const PostEdit = ({
               >
                 Remove
               </button>
-            ) : <div />}
+            ) : (
+              <div />
+            )}
             <div className="flex items-center">
-              <button type="submit" className="block mr-2 rounded bg-blue-600 text-white px-4 py-1">
+              <button
+                type="submit"
+                className="block mr-2 rounded bg-blue-600 text-white px-4 py-1"
+              >
                 {submitButtonText || 'Submit'}
               </button>
-              <button type="button" className="block text-gray-500" onClick={closeDialog}>
+              <button
+                type="button"
+                className="block text-gray-500"
+                onClick={closeDialog}
+              >
                 <HiX />
               </button>
             </div>
@@ -89,7 +103,9 @@ const PostEdit = ({
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className={`rounded bg-blue-600 text-white px-4 py-1 ${className || ''}`}
+        className={`rounded bg-blue-600 text-white px-4 py-1 ${
+          className || ''
+        }`}
       >
         {buttonText}
       </button>

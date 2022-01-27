@@ -1,7 +1,7 @@
 export interface PostData {
-  title: string,
-  body: string,
-  image: string,
+  title: string
+  body: string
+  image: string
 }
 
 export interface IdentifiedPostData extends PostData {
@@ -9,6 +9,6 @@ export interface IdentifiedPostData extends PostData {
 }
 
 export interface IntroData {
-  image: string,
+  image: string
   description: string
 }

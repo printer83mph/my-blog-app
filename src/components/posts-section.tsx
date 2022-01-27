@@ -13,7 +13,7 @@ const Posts = () => {
 
   const addPostCallback = useCallback(
     (data: PostData) => dispatch(addPost(data)),
-    [dispatch],
+    [dispatch]
   )
 
   return (
@@ -26,11 +26,15 @@ const Posts = () => {
           onSubmit={(data) => addPostCallback(data)}
         />
       </div>
-      { posts.length ? (
+      {posts.length ? (
         <ul className="flex gap-4 flex-wrap justify-start">
-          {posts.map((data) => (<Post {...data} key={data.id} />)) }
+          {posts.map((data) => (
+            <Post {...data} key={data.id} />
+          ))}
         </ul>
-      ) : <div className="text-gray-600">No posts yet!</div>}
+      ) : (
+        <div className="text-gray-600">No posts yet!</div>
+      )}
     </div>
   )
 }

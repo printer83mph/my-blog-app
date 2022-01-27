@@ -7,6 +7,7 @@ module.exports = {
       "airbnb",
       "airbnb-typescript",
       "airbnb/hooks",
+      "prettier",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

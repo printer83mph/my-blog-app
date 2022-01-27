@@ -2,8 +2,8 @@ import React from 'react'
 import { Dialog } from '@headlessui/react'
 
 export interface DialogProps {
-  isOpen: boolean,
-  onClose: () => void,
+  isOpen: boolean
+  onClose: () => void
   children: React.ReactNode
 }
 
