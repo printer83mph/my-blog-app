@@ -6,7 +6,7 @@ import { IdentifiedPostData, PostData } from '../types'
 import PostEdit from './post-edit'
 
 const Post = (props: IdentifiedPostData) => {
-  const { title, body, image, id } = props
+  const { id, title, body, image } = props
   const dispatch = useDispatch()
 
   const modifyPostCallback = useCallback(

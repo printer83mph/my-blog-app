@@ -27,15 +27,18 @@ const PostEdit = ({
   onRemove,
   className,
   defaultValues,
-  resetValues = true,
 }: PostEditProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const { handleSubmit, register, reset } = useForm({ defaultValues })
 
+  const openDialog = () => {
+    reset(defaultValues)
+    setIsOpen(true)
+  }
+
   // reset values (maybe) on close
   const closeDialog = () => {
     setIsOpen(false)
-    if (resetValues) reset()
   }
 
   // wrapper for onSubmit
@@ -102,7 +105,7 @@ const PostEdit = ({
       </FloatingDialog>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={() => openDialog()}
         className={`rounded bg-blue-600 text-white px-4 py-1 ${
           className || ''
         }`}
